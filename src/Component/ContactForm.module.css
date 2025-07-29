@@ -1,0 +1,66 @@
+.container {
+    background-color: rgb(82, 67, 117);
+    width: 900px;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    margin: auto;
+    padding: 20px;
+      border-radius: 10px;
+  box-shadow: 0 10px 100px rgba(237, 237, 237, 0.1);
+  position: relative;
+}
+.formField{
+    color: rgb(217, 218, 219);
+}
+.formField input{
+    border-radius: 5px;
+    width: 300px;
+    height: 28px;
+    margin: 5px;
+    box-shadow: 5px 5px 15px rgba(19, 3, 3, 0.1);
+    border-color: azure;
+}
+.submitButton {
+    margin: 20px  5px   ;
+    color: #b17dd3;
+    border-radius: 100px;
+    width: 50px;
+    height: 50px;
+    font-size: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid #c283ed;
+     transition: color 0.2s;
+      box-shadow: 5px 5px 15px rgba(19, 3, 3, 0.1);
+      
+}
+.submitButton:hover{
+    color: #603e7a;
+    border-color: #3e255cf0;
+    font-size: 42px;
+}
+
+.cancelButton {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  
+  cursor: pointer;
+  color: #280635;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.2s;
+  width: 25px;
+  height: 25px;
+  border-radius: 15px;
+  background-color: #e3d5ec;
+}
+
+.cancelButton:hover {
+  color: #f00;
+}

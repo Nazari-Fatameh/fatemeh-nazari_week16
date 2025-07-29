@@ -1,0 +1,106 @@
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(120, 120, 163, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: rgb(81, 44, 129);
+  padding: 10px 20px;
+  border-radius: 8px;
+  width: 450px;
+  max-width: 90vw;
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.3);
+  direction: rtl;
+}
+
+.formFieldEdit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 19px;
+}
+
+.formFieldEdit label {
+  width: 120px;
+  text-align: right;
+  color: #ffffff;
+  font-size: 18px;
+  
+}
+
+input {
+  flex-grow: 1;
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ebe8ef;
+  border-radius: 4px;
+  direction: ltr;
+  margin-bottom:9px ;
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.3);
+  background-color: #e1d6ff;
+  color: #1f1832;
+}
+
+button {
+  margin-right: 10px;
+  padding: 8px 16px;
+  font-size: 2rem;
+  cursor: pointer;
+  border-radius: 9px;
+  border: none;
+   
+}
+
+.submitEditButton {
+  background-color: #e0e096;
+  color: rgb(6, 5, 5);
+  font-size: 15px;
+  width: 40px;
+height: 40px;
+ transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.closeEditButton {
+  background-color: #e0e096;
+  color: rgb(255, 0, 0);
+  font-size: 25px;
+  width: 40px;
+  height: 40px;
+  margin-right: 350px;
+   transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.closeEditButton:hover {
+  color: #f00;
+}
+.modal h3 {
+    font-size:22px;
+    text-align: center;
+    margin-top: 2px;
+    color: rgb(255, 255, 255);
+    
+}
+
+input:focus {
+  border-color: #5a3ea0;
+  outline: none;
+  box-shadow: 0 0 18px #5a3ea0aa;
+}
+.closeEditButton:hover {
+  color: #f00;
+  background-color: #9d9c9e;
+  border-radius: 50%;
+}
+.submitEditButton:hover {
+  color: #f00;
+  background-color: #a69bad;
+  border-radius: 50%;
+}

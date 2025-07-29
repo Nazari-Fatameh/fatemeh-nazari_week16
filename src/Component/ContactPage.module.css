@@ -1,0 +1,52 @@
+
+.submitButton {
+  position: fixed;         
+  top: 20px;                
+  left: 20px;              
+  margin: 0;                
+  color: rgb(147, 63, 226);
+  border-radius: 100px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  font-size: 40px;
+  align-items: center;
+  justify-content: center;
+  border: solid #b876e1;
+  background-color: white;   
+  z-index: 1000;             
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  color: #603e7a;
+  border-color: #6930b5f0;
+  font-size: 42px;
+}
+.blur {
+  filter: blur(5px);
+  transition: filter 0.3s ease;
+  pointer-events: none; 
+  user-select: none;
+}
+
+.modalBackdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  min-width: 320px;
+  max-width: 90%;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+

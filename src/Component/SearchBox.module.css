@@ -1,0 +1,26 @@
+.containerSearchBox {
+    display: flex;
+    width: 900px;
+    height: 20px;
+    margin: auto;
+    align-items:center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgb(77, 49, 101);
+    border-radius: 9px;
+
+}
+.container input {
+    border-radius: 9px;
+    width: 500px;
+    height: 30px;
+    border-color: aliceblue;
+    justify-content: center;
+   
+}
+.searchInputLable{
+    color: rgb(214, 222, 229);
+    padding: 10px;
+    font-size: 20px;
+    
+}
