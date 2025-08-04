@@ -1,0 +1,34 @@
+.formField {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px; 
+  direction: ltr;
+}
+
+.formField label {
+  margin-left: 10px;
+  min-width: 110px;
+  color: rgb(28, 72, 26);
+  text-align: right;
+  font-size: 16px;
+}
+
+.formField input {
+  flex: 1;
+  border-radius: 5px;
+  height: 28px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  background-color: #ffffff;
+  color: rgb(28, 72, 26);
+  text-align: center;
+}
+
+p {
+  color: #fa0000;
+  font-size: 14px;
+  margin: 0 0 15px 120px; 
+  text-align: left;
+}

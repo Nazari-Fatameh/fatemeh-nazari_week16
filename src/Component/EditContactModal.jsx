@@ -1,9 +1,16 @@
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import styles from "./EditContactModal.module.css";
+import { toast } from "react-hot-toast";
+import InputField from "../common/InputField"; 
 
 function EditContactModal({ isOpen, onClose, onSubmit, initialData }) {
-  const { register, handleSubmit, reset } = useForm({
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
     defaultValues: initialData,
   });
 
@@ -15,45 +22,46 @@ function EditContactModal({ isOpen, onClose, onSubmit, initialData }) {
 
   const handleFormSubmit = (data) => {
     onSubmit(data);
+    toast.success("مخاطب با موفقیت ویرایش شد");
     onClose();
   };
 
   return (
-    <div className={styles.modalBackdrop}>
-      <div className={styles.modal}>
+    <div className={styles.modalBackdrop} onClick={onClose}>
+      <div
+        className={styles.modal}
+        onClick={(e) => e.stopPropagation()} 
+      >
         <h3>ویرایش مخاطب</h3>
         <form onSubmit={handleSubmit(handleFormSubmit)}>
-          <div className={styles.formFieldEdit}>
-            <label htmlFor="fullName" className={styles.formFieldEditLable}>
-              :نام و نام خانوادگی
-            </label>
-            <input id="fullName" {...register("fullName")} />
-          </div>
+          <InputField
+            label=":نام و نام خانوادگی"
+            name="fullName"
+            register={register}
+            error={errors.fullName}
+          />
 
-          <div className={styles.formFieldEdit}>
-            <label htmlFor="jop" className={styles.formFieldEditLable}>
-              :شغل
-            </label>
-            <input id="jop" {...register("jop")} placeholder="شغل" />
-          </div>
+          <InputField
+            label=":شغل"
+            name="jop"
+            register={register}
+            error={errors.jop}
+          />
 
-          <div className={styles.formFieldEdit}>
-            <label htmlFor="phoneNumber" className={styles.formFieldEditLable}>
-              :شماره تماس
-            </label>
-            <input
-              id="phoneNumber"
-              {...register("phoneNumber")}
-              placeholder="شماره تماس"
-            />
-          </div>
+          <InputField
+            label=":شماره تماس"
+            name="phoneNumber"
+            register={register}
+            error={errors.phoneNumber}
+          />
 
-          <div className={styles.formFieldEdit}>
-            <label htmlFor="email" className={styles.formFieldEditLable}>
-              :ایمیل
-            </label>
-            <input id="email" {...register("email")} placeholder="ایمیل" />
-          </div>
+          <InputField
+            label=":ایمیل"
+            name="email"
+            type="email"
+            register={register}
+            error={errors.email}
+          />
 
           <button type="submit" className={styles.submitEditButton}>
             ✔️

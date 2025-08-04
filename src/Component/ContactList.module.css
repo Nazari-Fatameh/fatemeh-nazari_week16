@@ -18,7 +18,7 @@
 }
 
 .bulkDeleteButton {
-  background-color: #442d6c;
+  background-color: #ded6be;
   color: white;
   border: none;
   padding: 6px 10px;
@@ -26,12 +26,12 @@
   cursor: pointer;
   margin: 10px;
   width: 60px;
-  height: 50px;
+  height: 55px;
   font-size: large;
 }
 
 .bulkDeleteButton:hover {
-  background-color: #c82333;
+  background-color: #7d5f56;
   font-size: 22px;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .listItem {
-  background: #412c5b;
+  background: #6b5149;
   border: 1px solid #ddd;
    padding: 12px 16px 12px 40px;
   margin-bottom: 10px;
@@ -53,6 +53,7 @@
   position: relative;
   justify-content:space-around;
   font-size: 19px;
+   box-shadow: 0 0 15px rgba(0, 0, 0, 0.479);
 
 }
 
@@ -70,6 +71,7 @@
   left: 10px;
   top: 20px;
   transform: scale(1.2);
+   accent-color: #6c9b4c;
 }
 
 .button {
@@ -81,19 +83,22 @@
 }
 
 .edit {
-  background-color: #b1a4cf;
-  color: rgb(45, 8, 64);
+  background-color: #eee3c3;
+  color: rgb(222, 206, 231);
   font-size: 14px;
 }
 
 .delete {
-  background-color: #e8dfdf;
-  color: rgba(234, 42, 42, 0.938);
+  background-color: #a8c3a9;
+  color: rgba(255, 10, 10, 0.938);
   font-size: 17px;
   font-style: bold;
+  transition: transform 0.2s ease; 
 }
 
 .button:hover {
-  opacity: 0.85;
+  opacity: 0.9;
+
+    transform: scale(1.09);
   
 }

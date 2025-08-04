@@ -3,6 +3,8 @@ import { ContactContext } from "../Context/ContactContext";
 import ContactForm from "./ContactForm";
 import ContactList from "./ContactList";
 import styles from "./ContactPage.module.css";
+import { toast } from "react-hot-toast";
+import phoneImage from "../photo/1.png";
 
 export default function ContactPage() {
   const { addContact } = useContext(ContactContext);
@@ -11,25 +13,40 @@ export default function ContactPage() {
   const handleAddContact = async (data) => {
     try {
       await addContact(data);
-      alert("مخاطب اضافه شد");
+      toast.success("مخاطب با موفقیت اضافه شد", { duration: 4000 });
       setShowForm(false);
     } catch (error) {
-      alert("خطا در افزودن مخاطب");
+      toast.error("❌ خطا در افزودن مخاطب");
     }
   };
 
   return (
     <>
       <div className={showForm ? styles.blur : ""}>
-        <ContactList />
-        {!showForm && (
-          <button
-            onClick={() => setShowForm(true)}
-            className={styles.submitButton}
-          >
-            +
-          </button>
-        )}
+        <div className={styles.container}>
+          <div className={styles.imageWrapper}>
+            <img
+              src={phoneImage}
+              alt="تصویر تلفن"
+              className={styles.animatedImage}
+            />
+          </div>
+
+          <div className={styles.contactListWrapper}>
+            <ContactList />
+            {!showForm && (
+              <button
+                onClick={() => setShowForm(true)}
+                className={styles.submitButton}
+              >
+                +
+                <span className={styles.submitButtonTitel}>
+                  اضافه کردن مخاطب جدید
+                </span>
+              </button>
+            )}
+          </div>
+        </div>
       </div>
 
       {showForm && (

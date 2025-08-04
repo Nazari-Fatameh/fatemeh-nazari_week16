@@ -1,24 +1,24 @@
+
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styles from "./ContactForm.module.css";
-const schema = yup.object({
-  fullName: yup.string().required("نام و نام خانوادگی  الزامی است"),
-  jop: yup.string().required("شغل  الزامی است"),
-  phoneNumber: yup.string().required("شماره تماس الزامی است"),
+import InputField from "../common/InputField";
 
+const schema = yup.object({
+  fullName: yup.string().required("نام و نام خانوادگی الزامی است"),
+  jop: yup.string().required("شغل الزامی است"),
+  phoneNumber: yup.string().required("شماره تماس الزامی است"),
   email: yup.string().email("ایمیل معتبر نیست").required("ایمیل الزامی است"),
 });
 
-export default function ContactForm({ onSubmit , onCancel }) {
+export default function ContactForm({ onSubmit, onCancel }) {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
+  } = useForm({ resolver: yupResolver(schema) });
 
   const onFormSubmit = async (data) => {
     try {
@@ -30,48 +30,40 @@ export default function ContactForm({ onSubmit , onCancel }) {
   };
 
   return (
-
     <div className={styles.container}>
-          <button 
-          type="button"
-          className={styles.cancelButton}
-          onClick={onCancel}
-        >
-          ×
-        </button>
+      <button type="button" className={styles.cancelButton} onClick={onCancel}>
+        ×
+      </button>
       <form onSubmit={handleSubmit(onFormSubmit)}>
-        <div className={styles.formField}>
-          <input {...register("fullName")} />
-          <label>:نام و نام خانوادگی</label>
+        <InputField
+          label=":نام و نام خانوادگی"
+          name="fullName"
+          register={register}
+          error={errors.fullName}
+        />
 
-          {errors.fullName && <p>{errors.fullName.message}</p>}
-        </div>
+        <InputField
+          label=":شغل"
+          name="jop"
+          register={register}
+          error={errors.jop}
+        />
 
-        <div className={styles.formField}>
-          <input {...register("jop")} />
-          <label>:شغل</label>
+        <InputField
+          label=":شماره تماس"
+          name="phoneNumber"
+          register={register}
+          error={errors.phoneNumber}
+        />
 
-          {errors.jop && <p>{errors.jop.message}</p>}
-        </div>
+        <InputField
+          label=":ایمیل"
+          name="email"
+          register={register}
+          error={errors.email}
+        />
 
-        <div className={styles.formField}>
-          <input {...register("phoneNumber")} />
-          <label> :شماره تماس</label>
-
-          {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
-        </div>
-        <div className={styles.formField}>
-          <input {...register("email")} />
-          <label> :ایمیل</label>
-
-          {errors.email && <p>{errors.email.message}</p>}
-        </div>
-
-        <button type="submit" className={styles.submitButton}>
-          {" "}
-          +
-        </button>
-    
+        <button type="submit" className={styles.submitButton}>+</button>
       </form>
     </div>
   );

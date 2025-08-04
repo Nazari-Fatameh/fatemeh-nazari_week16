@@ -1,56 +1,59 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useReducer, useEffect } from "react";
+import {
+  fetchContacts,
+  addContact as apiAddContact,
+  deleteContact as apiDeleteContact,
+  editContact as apiEditContact,
+  deleteMultipleContacts as apiDeleteMultipleContacts,
+} from "../services/contactServices.js";
 
 const ContactContext = createContext();
 
+const contactReducer = (state, action) => {
+  switch (action.type) {
+    case "SET_CONTACTS":
+      return action.payload;
+    case "ADD_CONTACT":
+      return [...state, action.payload];
+    case "DELETE_CONTACT":
+      return state.filter((c) => c.id !== action.payload);
+    case "EDIT_CONTACT":
+      return state.map((c) => (c.id === action.payload.id ? action.payload : c));
+    case "DELETE_MULTIPLE":
+      return state.filter((c) => !action.payload.includes(c.id));
+    default:
+      return state;
+  }
+};
+
 const ContactProvider = ({ children }) => {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, dispatch] = useReducer(contactReducer, []);
+
+  useEffect(() => {
+    fetchContacts()
+      .then((data) => dispatch({ type: "SET_CONTACTS", payload: data }))
+      .catch((err) => console.error(err));
+  }, []);
 
   const addContact = async (newContact) => {
-    try {
-      const res = await fetch("http://127.0.0.1:4000/contacts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newContact),
-      });
-      if (!res.ok) throw new Error("خطا در افزودن مخاطب");
-      const data = await res.json();
-      setContacts((prev) => [...prev, data]);
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
+    const data = await apiAddContact(newContact);
+    dispatch({ type: "ADD_CONTACT", payload: data });
   };
 
   const deleteContact = async (id) => {
-    await fetch(`http://127.0.0.1:4000/contacts/${id}`, { method: "DELETE" });
-    setContacts((prev) => prev.filter((c) => c.id !== id));
+    await apiDeleteContact(id);
+    dispatch({ type: "DELETE_CONTACT", payload: id });
   };
 
   const editContact = async (id, updatedContact) => {
-    const res = await fetch(`http://127.0.0.1:4000/contacts/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updatedContact),
-    });
-    const data = await res.json();
-    setContacts((prev) => prev.map((c) => (c.id === id ? data : c)));
+    const data = await apiEditContact(id, updatedContact);
+    dispatch({ type: "EDIT_CONTACT", payload: data });
   };
 
   const deleteMultipleContacts = async (ids) => {
-    await Promise.all(
-      ids.map((id) =>
-        fetch(`http://127.0.0.1:4000/contacts/${id}`, { method: "DELETE" })
-      )
-    );
-    setContacts((prev) => prev.filter((c) => !ids.includes(c.id)));
+    await apiDeleteMultipleContacts(ids);
+    dispatch({ type: "DELETE_MULTIPLE", payload: ids });
   };
-
-  useEffect(() => {
-    fetch("http://127.0.0.1:4000/contacts")
-      .then((res) => res.json())
-      .then((data) => setContacts(data))
-      .catch((err) => console.error("خطا در گرفتن مخاطبین:", err));
-  }, []);
 
   return (
     <ContactContext.Provider

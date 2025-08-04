@@ -6,20 +6,22 @@
     align-items:center;
     justify-content: center;
     padding: 20px;
-    background-color: rgb(77, 49, 101);
+    background-color: #F7EED3;
     border-radius: 9px;
 
 }
-.container input {
-    border-radius: 9px;
-    width: 500px;
-    height: 30px;
-    border-color: aliceblue;
+.containerSearchBox input {
+    border-radius: 4px;
+    width: 50px;
+    height: 25px;
+    border-color: white;
+    background-color: aliceblue;
+margin-top: 4px;
     justify-content: center;
    
 }
 .searchInputLable{
-    color: rgb(214, 222, 229);
+    color: rgb(61, 95, 72);
     padding: 10px;
     font-size: 20px;
     

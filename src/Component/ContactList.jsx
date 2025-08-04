@@ -3,6 +3,7 @@ import { ContactContext } from "../Context/ContactContext";
 import SearchBox from "./SearchBox";
 import EditContactModal from "./EditContactModal";
 import styles from "./ContactList.module.css";
+import { toast } from "react-hot-toast";
 
 function ContactList() {
   const { contacts, deleteContact, editContact, deleteMultipleContacts } =
@@ -24,7 +25,7 @@ function ContactList() {
   };
 
   const filteredContacts = contacts.filter((c) =>
-    [c.fullName, c.jop,c.email].some((field) =>
+    [c.fullName, c.jop, c.email].some((field) =>
       (field || "").toLowerCase().includes(searchTerm.toLowerCase())
     )
   );
@@ -43,6 +44,8 @@ function ContactList() {
                 )
               ) {
                 deleteMultipleContacts(selectedIds);
+                toast.success(" مخاطبین با موفقیت حذف شدند");
+
                 setSelectedIds([]);
               }
             }}
@@ -55,9 +58,7 @@ function ContactList() {
       <ul className={styles.list}>
         {filteredContacts.map((contact) => (
           <li key={contact.id} className={styles.listItem}>
-            <strong>
-              {contact.fullName} 
-            </strong>
+            <strong>{contact.fullName}</strong>
             <span>{contact.email}</span>
             <span>{contact.phoneNumber}</span>
             <div className={styles.actions}>
@@ -84,6 +85,7 @@ function ContactList() {
                   onClick={() => {
                     if (window.confirm("آیا مطمئن هستید؟")) {
                       deleteContact(contact.id);
+                      toast.success(" مخاطب با موفقیت حذف شد");
                     }
                   }}
                   className={`${styles.button} ${styles.delete}`}

@@ -4,7 +4,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(120, 120, 163, 0.5);
+  background-color: rgba(93, 95, 86, 0.276);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +12,7 @@
 }
 
 .modal {
-  background-color: rgb(81, 44, 129);
+  background-color: #CAE0BC;
   padding: 10px 20px;
   border-radius: 8px;
   width: 450px;
@@ -31,7 +31,7 @@
 .formFieldEdit label {
   width: 120px;
   text-align: right;
-  color: #ffffff;
+  color: #234417;
   font-size: 18px;
   
 }
@@ -45,7 +45,7 @@ input {
   direction: ltr;
   margin-bottom:9px ;
   box-shadow: 0 2px 18px rgba(0, 0, 0, 0.3);
-  background-color: #e1d6ff;
+  background-color: #f0f0f0;
   color: #1f1832;
 }
 
@@ -54,13 +54,13 @@ button {
   padding: 8px 16px;
   font-size: 2rem;
   cursor: pointer;
-  border-radius: 9px;
+  border-radius: 12px;
   border: none;
    
 }
 
 .submitEditButton {
-  background-color: #e0e096;
+  background-color: #668e4d;
   color: rgb(6, 5, 5);
   font-size: 15px;
   width: 40px;
@@ -69,7 +69,8 @@ height: 40px;
 }
 
 .closeEditButton {
-  background-color: #e0e096;
+  background-color:  #668e4d;
+;
   color: rgb(255, 0, 0);
   font-size: 25px;
   width: 40px;
@@ -85,22 +86,22 @@ height: 40px;
     font-size:22px;
     text-align: center;
     margin-top: 2px;
-    color: rgb(255, 255, 255);
+    color: rgb(28, 72, 26);
     
 }
 
 input:focus {
-  border-color: #5a3ea0;
+  border-color: #f3f1f9;
   outline: none;
   box-shadow: 0 0 18px #5a3ea0aa;
 }
 .closeEditButton:hover {
   color: #f00;
-  background-color: #9d9c9e;
+  background-color: #234417;
   border-radius: 50%;
 }
 .submitEditButton:hover {
   color: #f00;
-  background-color: #a69bad;
+  background-color: #234417;
   border-radius: 50%;
 }
